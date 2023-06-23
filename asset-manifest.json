@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/Weather-Yeti/static/css/main.03e3e4c6.css",
-    "main.js": "/Weather-Yeti/static/js/main.dd8bc55b.js",
+    "main.js": "/Weather-Yeti/static/js/main.898d6d3e.js",
     "static/media/yetipic.png": "/Weather-Yeti/static/media/yetipic.4749c506c2bd7337cc79.png",
     "index.html": "/Weather-Yeti/index.html",
     "main.03e3e4c6.css.map": "/Weather-Yeti/static/css/main.03e3e4c6.css.map",
-    "main.dd8bc55b.js.map": "/Weather-Yeti/static/js/main.dd8bc55b.js.map"
+    "main.898d6d3e.js.map": "/Weather-Yeti/static/js/main.898d6d3e.js.map"
   },
   "entrypoints": [
     "static/css/main.03e3e4c6.css",
-    "static/js/main.dd8bc55b.js"
+    "static/js/main.898d6d3e.js"
   ]
 }
