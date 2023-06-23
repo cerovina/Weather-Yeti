@@ -1,25 +1,53 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import myImage from './yetipic.png';
 
-function App() {
+const API_KEY = 'bf5e3712d65100c68cc0264827fd70e0';
+
+const WeatherApp = () => {
+  const [city, setCity] = useState('');
+  const [weather, setWeather] = useState(null);
+
+  const fetchWeatherData = async () => {
+    try {
+      const response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}`
+      );
+      const data = await response.json();
+      setWeather(data);
+    } catch (error) {
+      console.error('Error fetching weather data:', error);
+    }
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetchWeatherData();
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <><div className='yetipic'>
+          <img src={myImage} alt="Yeti" />
+      </div><div className="weather-container">
+              <h1>Weather Yeti</h1>
+              <form onSubmit={handleSubmit}>
+                  <input
+                      type="text"
+                      placeholder="Enter city name"
+                      value={city}
+                      onChange={(e) => setCity(e.target.value)} />
+                  <button type="submit">Get Weather</button>
+              </form>
 
-export default App;
+              {weather && (
+                  <div className='info'>
+                      <h2>{weather.name}</h2>
+                      <p>Temperature: {Math.round(weather.main.temp - 273.15)}°C</p>
+                      <p>Weather: {weather.weather[0].main}</p>
+                  </div>
+              )}
+          </div></>
+  );
+};
+
+export default WeatherApp;
