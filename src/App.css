@@ -12,12 +12,23 @@ body {
   justify-content: center;
 }
 
+.random-text {
+  margin-top: 21px;
+  width: 40px;
+  height: 10px;
+  position: absolute;
+  font-size: 4px;
+  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
 .weather-container {
   margin: auto;
   width: 300px;
   height: 300px;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 146px;
   background-color: #0520AF;
   padding-top: 3px;
   padding-bottom: 30px;

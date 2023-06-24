@@ -7,6 +7,25 @@ const API_KEY = 'bf5e3712d65100c68cc0264827fd70e0';
 const WeatherApp = () => {
   const [city, setCity] = useState('');
   const [weather, setWeather] = useState(null);
+  const [randomTextIndex, setRandomTextIndex] = useState(0);
+
+  const randomTextExamples = [
+    "Anyway... who wants ice cream?",
+    "Such important info for a Yeti...",
+    "I'll stick to my forest, thanks...",
+    "Wow, you are really curious today!",
+    "Phew, glad I'm not there... I'd melt!",
+    "Say hi to Nikola for me!",
+    "He promised me a Yeti girl...",
+    "Oh, that again...",
+    "Zzzzzzzzz...",
+    "Why would you search that?",
+    "Got some ice cream?",
+    "You think this is free? I had to try...",
+    "Hmmm... not for me...",
+    "Yep, you guessed it, too hot for me...",
+    "Hello again!"
+  ];
 
   const fetchWeatherData = async () => {
     try {
@@ -17,11 +36,12 @@ const WeatherApp = () => {
 
       if (response.ok) {
         setWeather(data);
+        setRandomTextIndex((prevIndex) => (prevIndex + 1) % randomTextExamples.length);
       } else {
         throw new Error(data.message);
       }
     } catch (error) {
-      alert('You are making Nikola upset with your laziness!');
+      alert('You are making the Yeti upset with your laziness!');
       console.error('No city name', error);
     }
   };
@@ -35,10 +55,15 @@ const WeatherApp = () => {
     }
   };
 
+  const getRandomText = () => {
+    return randomTextExamples[randomTextIndex];
+  };
+
   return (
     <>
       <div className='yetipic'>
         <img src={myImage} alt="Yeti" />
+        <div className="random-text">{getRandomText()}</div>
       </div>
       <div className="weather-container">
         <h1>Weather Yeti</h1>
@@ -49,7 +74,7 @@ const WeatherApp = () => {
             value={city}
             onChange={(e) => setCity(e.target.value)}
           />
-          <button type="submit">Get Weather</button>
+          <button type="submit">Ask the Yeti</button>
         </form>
 
         {weather && (
